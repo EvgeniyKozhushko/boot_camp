@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+</head>
+<body>
+    <h1>Книга</h1>
+    <h2>{{ book }}</h2><br>
+    ID : {{ book.pk }} <br>
+    Автор:
+    <ul>
+        {% for name in book.book_author.all %}
+        <li>{{ name.name }}</li>
+        {% endfor %}
+      </ul>  <br>
+    Серия книг : {{ book.book_series }}<br>
+    Жанр : {{ book.book_genre}} <br>
+    Год издания : {{ book.year_publishing}}<br>
+    Количество страниц : {{ book.number_pages}} <br>
+    Формат : {{ book.size}} <br>
+    Издательство : {{ book.publishing_house}} <br>
+    Рейтинг : {{ book.rating}} <br>
+    Дата создания : {{ book.date_inclusion}} <br>
+    Дата изменения : {{ book.date_change}} <br>
+</html>

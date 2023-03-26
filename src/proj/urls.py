@@ -16,10 +16,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from books import views as books_views 
+from books import views as books_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('HW/', books_views.books),
-    path('', books_views.books_home),
+    path('', books_views.books_home, name='home'),
+
+    path('home_books/', books_views.HomeBookListView.as_view(), name='home-books'),
+    path('book/<int:pk>', books_views.BookDetailView.as_view(), name='book'),
+    path('book_create/', books_views.BookCreateView.as_view(), name='book-create'),
+    path('book_update/<int:pk>/', books_views.BookUpdateView.as_view(), name='book-update'),
+    path('book_delete/<int:pk>/', books_views.BookDeleteView.as_view(), name='book-delete'),
+
+
+    path('home_authors/', books_views.AuthorListView.as_view(), name='home-authors'),
+    path('author/<int:pk>/', books_views.AuthorDetailView.as_view(), name='author'),
+    path('author_create/', books_views.AuthorCreateView.as_view(), name='author-create'),
+    path('author_update/<int:pk>/', books_views.AuthorUpdateView.as_view(), name='author-update'),
+    path('author_delete/<int:pk>/', books_views.AuthorDeleteView.as_view(), name='author-delete')
 ]
